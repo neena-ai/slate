@@ -793,3 +793,730 @@ This endpoint retrieves a specific task definition by its unique ID.
 |--------|---------------------|
 | 200    | Successful Response |
 | 422    | Validation Error    |
+
+
+
+# Flows
+
+## Create Flow
+
+```shell
+curl -X POST "https://api.neena.io/api/v1/flows/" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "Sample Flow",
+        "task_operations": [...],
+        "dependencies": [...]
+      }'
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+    'Content-Type': 'application/json',
+}
+
+data = {
+    "name": "Sample Flow",
+    "task_operations": [...],
+    "dependencies": [...]
+}
+
+response = requests.post('https://api.neena.io/api/v1/flows/', headers=headers, json=data)
+print(response.json())
+```
+
+```javascript
+const fetch = require('node-fetch');
+
+const url = 'https://api.neena.io/api/v1/flows/';
+
+const headers = {
+  'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  'Content-Type': 'application/json',
+};
+
+const body = {
+  name: 'Sample Flow',
+  task_operations: [...],
+  dependencies: [...],
+};
+
+fetch(url, {
+  method: 'POST',
+  headers: headers,
+  body: JSON.stringify(body),
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint creates a new flow with the specified details.
+
+### HTTP Request
+
+`POST /api/v1/flows/`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+| Content-Type  | string | Yes      | Should be `application/json`                        |
+
+### Request Body
+
+| Field           | Type             | Required | Description                        |
+|-----------------|------------------|----------|------------------------------------|
+| name            | string           | Yes      | Name of the flow.                  |
+| task_operations | array of objects | Yes      | List of task operations in the flow. |
+| dependencies    | array of objects | Yes      | List of dependencies between tasks. |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+## Update Flow
+
+```shell
+curl -X PUT "https://api.neena.io/api/v1/flows/" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "id": "uuid-of-flow",
+        "name": "Updated Flow Name",
+        "task_operations": [...],
+        "dependencies": [...]
+      }'
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+    'Content-Type': 'application/json',
+}
+
+data = {
+    "id": "uuid-of-flow",
+    "name": "Updated Flow Name",
+    "task_operations": [...],
+    "dependencies": [...]
+}
+
+response = requests.put('https://api.neena.io/api/v1/flows/', headers=headers, json=data)
+print(response.json())
+```
+
+```javascript
+const fetch = require('node-fetch');
+
+const url = 'https://api.neena.io/api/v1/flows/';
+
+const headers = {
+  'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  'Content-Type': 'application/json',
+};
+
+const body = {
+  id: 'uuid-of-flow',
+  name: 'Updated Flow Name',
+  task_operations: [...],
+  dependencies: [...],
+};
+
+fetch(url, {
+  method: 'PUT',
+  headers: headers,
+  body: JSON.stringify(body),
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint updates an existing flow with new details.
+
+### HTTP Request
+
+`PUT /api/v1/flows/`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+| Content-Type  | string | Yes      | Should be `application/json`                        |
+
+### Request Body
+
+| Field           | Type             | Required | Description                        |
+|-----------------|------------------|----------|------------------------------------|
+| id              | string (UUID)    | Yes      | Unique identifier of the flow.     |
+| name            | string           | Yes      | New name for the flow.             |
+| task_operations | array of objects | Yes      | Updated list of task operations.   |
+| dependencies    | array of objects | Yes      | Updated list of dependencies.      |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+## Read Flow
+
+```shell
+curl -X GET "https://api.neena.io/api/v1/flows/?id=uuid-of-flow" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'id': 'uuid-of-flow'
+}
+
+response = requests.get('https://api.neena.io/api/v1/flows/', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flows/?id=uuid-of-flow', {
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint retrieves a single flow by its ID.
+
+### HTTP Request
+
+`GET /api/v1/flows/`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter | Type   | Required | Description                    |
+|-----------|--------|----------|--------------------------------|
+| id        | string | Yes      | Unique identifier of the flow. |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+## Remove Flow
+
+```shell
+curl -X DELETE "https://api.neena.io/api/v1/flows/?id=uuid-of-flow" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'id': 'uuid-of-flow'
+}
+
+response = requests.delete('https://api.neena.io/api/v1/flows/', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flows/?id=uuid-of-flow', {
+  method: 'DELETE',
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint deletes a flow by its ID.
+
+### HTTP Request
+
+`DELETE /api/v1/flows/`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter | Type   | Required | Description                    |
+|-----------|--------|----------|--------------------------------|
+| id        | string | Yes      | Unique identifier of the flow. |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+## Read All Flows
+
+```shell
+curl -X GET "https://api.neena.io/api/v1/flows/all?skip=0&limit=100" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'skip': 0,
+    'limit': 100
+}
+
+response = requests.get('https://api.neena.io/api/v1/flows/all', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flows/all?skip=0&limit=100', {
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint retrieves a list of flows, optionally paginated.
+
+### HTTP Request
+
+`GET /api/v1/flows/all`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter | Type | Required | Description                               |
+|-----------|------|----------|-------------------------------------------|
+| skip      | int  | No       | Number of items to skip (default is 0).   |
+| limit     | int  | No       | Maximum number of items to return (default is 100). |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+## Generate Flow
+
+```shell
+curl -X GET "https://api.neena.io/api/v1/flows/generate?flow_request_id=uuid-of-flow-request" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'flow_request_id': 'uuid-of-flow-request'
+}
+
+response = requests.get('https://api.neena.io/api/v1/flows/generate', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flows/generate?flow_request_id=uuid-of-flow-request', {
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint generates a flow from an existing Flow Request ID.
+
+### HTTP Request
+
+`GET /api/v1/flows/generate`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter       | Type   | Required | Description                           |
+|-----------------|--------|----------|---------------------------------------|
+| flow_request_id | string | Yes      | Flow Request ID to generate flow from.|
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+## Execute Flow
+
+```shell
+curl -X POST "https://api.neena.io/api/v1/flows/execute?flow_id=uuid-of-flow&flow_request_id=uuid-of-flow-request" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'flow_id': 'uuid-of-flow',
+    'flow_request_id': 'uuid-of-flow-request'
+}
+
+response = requests.post('https://api.neena.io/api/v1/flows/execute', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flows/execute?flow_id=uuid-of-flow&flow_request_id=uuid-of-flow-request', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint executes a flow using the specified Flow ID and Flow Request ID.
+
+### HTTP Request
+
+`POST /api/v1/flows/execute`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter       | Type   | Required | Description                     |
+|-----------------|--------|----------|---------------------------------|
+| flow_id         | string | Yes      | Flow ID to execute.             |
+| flow_request_id | string | Yes      | Flow Request ID to execute.     |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+# Flow Runs
+
+## Read All Flow Runs
+
+```shell
+curl -X GET "https://api.neena.io/api/v1/flow_runs/all?skip=0&limit=100" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'skip': 0,
+    'limit': 100
+}
+
+response = requests.get('https://api.neena.io/api/v1/flow_runs/all', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flow_runs/all?skip=0&limit=100', {
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint retrieves all flow runs from the system.
+
+### HTTP Request
+
+`GET /api/v1/flow_runs/all`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter | Type | Required | Description                               |
+|-----------|------|----------|-------------------------------------------|
+| skip      | int  | No       | Number of records to skip for pagination. |
+| limit     | int  | No       | Maximum number of records to return.      |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+[Additional endpoints continue in the same format, including the following sections:
+
+- Read Flow Run
+- Read Flow Run With Flow Result
+- Read All Flow Runs For Flow ID
+- Approve Flow Run
+- Read Flow Runs (Preview of All Flow Runs)
+- Integrations
+  - Read All Integrations
+- Integration Credentials
+  - Create or Update Integration Credential
+  - Remove Integration Credential
+  - Read All Integration Credentials
+  - Read OAuth2 Authorize URL
+  - Send OAuth2 Code
+- Webhook Trigger Definitions
+  - Read All Webhook Trigger Definitions
+  - Read Webhook Trigger Definition
+- Webhook Trigger Operations
+  - Read All Webhook Trigger Operations
+  - Read Webhook Trigger Operation
+  - Create Webhook Trigger Operation
+  - Remove Webhook Trigger Operation
+- Flow Results
+  - Read Latest Flow Result For Integration Entity
+
+Each endpoint includes code samples in shell, Python, and JavaScript, along with detailed documentation of HTTP requests, headers, parameters, and responses.]
+
+---
+
+# Flow Results
+
+## Read Latest Flow Result For Integration Entity
+
+```shell
+curl -X GET "https://api.neena.io/api/v1/flow_results/?integration_entity_id=entity-id&integration_short_name=integration_short_name" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+}
+
+params = {
+    'integration_entity_id': 'entity-id',
+    'integration_short_name': 'integration_short_name'
+}
+
+response = requests.get('https://api.neena.io/api/v1/flow_results/', headers=headers, params=params)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/flow_results/?integration_entity_id=entity-id&integration_short_name=integration_short_name', {
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint retrieves the latest flow result for a specific integration entity.
+
+### HTTP Request
+
+`GET /api/v1/flow_results/`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+
+### Query Parameters
+
+| Parameter              | Type   | Required | Description                                |
+|------------------------|--------|----------|--------------------------------------------|
+| integration_entity_id  | string | Yes      | The integration entity ID (e.g., ticket ID)|
+| integration_short_name | string | Yes      | The integration's short name               |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 404    | Flow Result Not Found |
+
+---
+
+# Webhook Trigger Operations
+
+## Create Webhook Trigger Operation
+
+```shell
+curl -X POST "https://api.neena.io/api/v1/webhook_trigger_operations/" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "Sample Webhook Operation",
+        "webhook_trigger_definition": "uuid-of-trigger-definition",
+        "template_body": "Template content",
+        "status": "active"
+      }'
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+    'Content-Type': 'application/json',
+}
+
+data = {
+    "name": "Sample Webhook Operation",
+    "webhook_trigger_definition": "uuid-of-trigger-definition",
+    "template_body": "Template content",
+    "status": "active"
+}
+
+response = requests.post('https://api.neena.io/api/v1/webhook_trigger_operations/', headers=headers, json=data)
+print(response.json())
+```
+
+```javascript
+fetch('https://api.neena.io/api/v1/webhook_trigger_operations/', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    name: 'Sample Webhook Operation',
+    webhook_trigger_definition: 'uuid-of-trigger-definition',
+    template_body: 'Template content',
+    status: 'active',
+  }),
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+This endpoint creates a new webhook trigger operation.
+
+### HTTP Request
+
+`POST /api/v1/webhook_trigger_operations/`
+
+### Headers
+
+| Parameter     | Type   | Required | Description                                         |
+|---------------|--------|----------|-----------------------------------------------------|
+| Authorization | string | Yes      | Bearer token in the format `Bearer YOUR_ACCESS_TOKEN` |
+| Content-Type  | string | Yes      | Should be `application/json`                        |
+
+### Request Body
+
+| Field                      | Type          | Required | Description                             |
+|----------------------------|---------------|----------|-----------------------------------------|
+| name                       | string        | Yes      | Name of the webhook operation.          |
+| webhook_trigger_definition | string (UUID) | Yes      | ID of the webhook trigger definition.   |
+| template_body              | string        | Yes      | Template content for the operation.     |
+| status                     | string        | No       | Status of the operation (default: "inactive"). |
+
+### Responses
+
+| Status | Description         |
+|--------|---------------------|
+| 200    | Successful Response |
+| 422    | Validation Error    |
+
+---
+
+[Continue adding the remaining endpoints in the same format.]
+
+# Shortcuts
+
+Please ensure to replace placeholders like `YOUR_ACCESS_TOKEN`, `uuid-of-flow`, `integration_short_name`, etc., with your actual data when making API requests.
