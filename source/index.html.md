@@ -33,7 +33,7 @@ Welcome to the Neena API! With the Neena platform API, you can send requests for
 
 ```shell
 # With shell, you can pass the correct header with each request
-curl "https://your_api_base_url/api/endpoint" \
+curl "api.neena.io/api/endpoint" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -44,14 +44,14 @@ headers = {
     'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
 }
 
-response = requests.get('https://your_api_base_url/api/endpoint', headers=headers)
+response = requests.get('api.neena.io/api/endpoint', headers=headers)
 ```
 
 ```ruby
 require 'net/http'
 require 'uri'
 
-uri = URI.parse("https://your_api_base_url/api/endpoint")
+uri = URI.parse("api.neena.io/api/endpoint")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -63,7 +63,7 @@ end
 ```javascript
 const fetch = require('node-fetch');
 
-fetch('https://your_api_base_url/api/endpoint', {
+fetch('api.neena.io/api/endpoint', {
   headers: {
     'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
   },
@@ -85,7 +85,7 @@ You must replace <code>YOUR_ACCESS_TOKEN</code> with your personal API key.
 ## Get Current User
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/users/" \
+curl -X GET "api.neena.io/api/v1/users/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -96,7 +96,7 @@ headers = {
     'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
 }
 
-response = requests.get('https://your_api_base_url/api/v1/users/', headers=headers)
+response = requests.get('api.neena.io/api/v1/users/', headers=headers)
 print(response.json())
 ```
 
@@ -104,7 +104,7 @@ print(response.json())
 require 'net/http'
 require 'uri'
 
-uri = URI.parse("https://your_api_base_url/api/v1/users/")
+uri = URI.parse("api.neena.io/api/v1/users/")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -118,7 +118,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-fetch('https://your_api_base_url/api/v1/users/', {
+fetch('api.neena.io/api/v1/users/', {
   headers: {
     'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
   },
@@ -162,7 +162,7 @@ Status | Description
 ## Create User If Not Exists
 
 ```shell
-curl -X POST "https://your_api_base_url/api/v1/users/create_if_not_exists" \
+curl -X POST "api.neena.io/api/v1/users/create_if_not_exists" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -186,7 +186,7 @@ data = {
     "auth0_id": "auth0|123456789"
 }
 
-response = requests.post('https://your_api_base_url/api/v1/users/create_if_not_exists', headers=headers, json=data)
+response = requests.post('api.neena.io/api/v1/users/create_if_not_exists', headers=headers, json=data)
 print(response.json())
 ```
 
@@ -195,7 +195,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/users/create_if_not_exists")
+uri = URI.parse("api.neena.io/api/v1/users/create_if_not_exists")
 request = Net::HTTP::Post.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 request["Content-Type"] = "application/json"
@@ -215,7 +215,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/users/create_if_not_exists';
+const url = 'api.neena.io/api/v1/users/create_if_not_exists';
 
 const headers = {
   'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
@@ -288,7 +288,7 @@ Ensure that the email provided matches the email of the authenticated user.
 ## Create Flow Request
 
 ```shell
-curl -X POST "https://your_api_base_url/api/v1/flow_requests/" \
+curl -X POST "api.neena.io/api/v1/flow_requests/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -316,7 +316,7 @@ data = {
     "organization": "uuid-of-organization"
 }
 
-response = requests.post('https://your_api_base_url/api/v1/flow_requests/', headers=headers, json=data)
+response = requests.post('api.neena.io/api/v1/flow_requests/', headers=headers, json=data)
 print(response.json())
 ```
 
@@ -325,7 +325,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_requests/")
+uri = URI.parse("api.neena.io/api/v1/flow_requests/")
 request = Net::HTTP::Post.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 request["Content-Type"] = "application/json"
@@ -347,7 +347,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_requests/';
+const url = 'api.neena.io/api/v1/flow_requests/';
 
 const headers = {
   'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
@@ -419,7 +419,7 @@ Status | Description
 ## Update Flow Request
 
 ```shell
-curl -X PUT "https://your_api_base_url/api/v1/flow_requests/" \
+curl -X PUT "api.neena.io/api/v1/flow_requests/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -485,7 +485,7 @@ Status | Description
 ## Read Flow Request
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/flow_requests/?id=uuid-of-flow-request" \
+curl -X GET "api.neena.io/api/v1/flow_requests/?id=uuid-of-flow-request" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -500,7 +500,7 @@ params = {
     'id': 'uuid-of-flow-request'
 }
 
-response = requests.get('https://your_api_base_url/api/v1/flow_requests/', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/flow_requests/', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -547,7 +547,7 @@ Status | Description
 ## Delete Flow Request
 
 ```shell
-curl -X DELETE "https://your_api_base_url/api/v1/flow_requests/?id=uuid-of-flow-request" \
+curl -X DELETE "api.neena.io/api/v1/flow_requests/?id=uuid-of-flow-request" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -596,7 +596,7 @@ Status | Description
 ## Create Flow
 
 ```shell
-curl -X POST "https://your_api_base_url/api/v1/flows/" \
+curl -X POST "api.neena.io/api/v1/flows/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -656,7 +656,7 @@ Status | Description
 ## Get All Integrations
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/integrations/all?skip=0&limit=100" \
+curl -X GET "api.neena.io/api/v1/integrations/all?skip=0&limit=100" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -672,7 +672,7 @@ params = {
     'limit': 100,
 }
 
-response = requests.get('https://your_api_base_url/api/v1/integrations/all', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/integrations/all', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -681,7 +681,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/integrations/all?skip=0&limit=100")
+uri = URI.parse("api.neena.io/api/v1/integrations/all?skip=0&limit=100")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -695,7 +695,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/integrations/all?skip=0&limit=100';
+const url = 'api.neena.io/api/v1/integrations/all?skip=0&limit=100';
 
 fetch(url, {
   headers: {
@@ -764,7 +764,7 @@ Status | Description
 ## Get All Task Definitions
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/task_definitions/all?skip=0&limit=100" \
+curl -X GET "api.neena.io/api/v1/task_definitions/all?skip=0&limit=100" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -780,7 +780,7 @@ params = {
     'limit': 100,
 }
 
-response = requests.get('https://your_api_base_url/api/v1/task_definitions/all', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/task_definitions/all', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -789,7 +789,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/task_definitions/all?skip=0&limit=100")
+uri = URI.parse("api.neena.io/api/v1/task_definitions/all?skip=0&limit=100")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -803,7 +803,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/task_definitions/all?skip=0&limit=100';
+const url = 'api.neena.io/api/v1/task_definitions/all?skip=0&limit=100';
 
 fetch(url, {
   headers: {
@@ -896,7 +896,7 @@ Status | Description
 ## Get Task Definition by ID
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/task_definitions/?id=uuid-of-task-definition" \
+curl -X GET "api.neena.io/api/v1/task_definitions/?id=uuid-of-task-definition" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -911,7 +911,7 @@ params = {
     'id': 'uuid-of-task-definition',
 }
 
-response = requests.get('https://your_api_base_url/api/v1/task_definitions/', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/task_definitions/', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -920,7 +920,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/task_definitions/?id=uuid-of-task-definition")
+uri = URI.parse("api.neena.io/api/v1/task_definitions/?id=uuid-of-task-definition")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -934,7 +934,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/task_definitions/?id=uuid-of-task-definition';
+const url = 'api.neena.io/api/v1/task_definitions/?id=uuid-of-task-definition';
 
 fetch(url, {
   headers: {
@@ -1028,7 +1028,7 @@ If the task definition is not found, a 404 error is raised.
 ## Get All Flow Runs
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/flow_runs/all?skip=0&limit=100" \
+curl -X GET "api.neena.io/api/v1/flow_runs/all?skip=0&limit=100" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -1044,7 +1044,7 @@ params = {
     'limit': 100,
 }
 
-response = requests.get('https://your_api_base_url/api/v1/flow_runs/all', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/flow_runs/all', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -1053,7 +1053,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/all?skip=0&limit=100")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/all?skip=0&limit=100")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -1067,7 +1067,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/all?skip=0&limit=100';
+const url = 'api.neena.io/api/v1/flow_runs/all?skip=0&limit=100';
 
 fetch(url, {
   headers: {
@@ -1137,7 +1137,7 @@ Status | Description
 ## Get Flow Run by ID
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/flow_runs/?id=uuid-of-flow-run" \
+curl -X GET "api.neena.io/api/v1/flow_runs/?id=uuid-of-flow-run" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -1152,7 +1152,7 @@ params = {
     'id': 'uuid-of-flow-run',
 }
 
-response = requests.get('https://your_api_base_url/api/v1/flow_runs/', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/flow_runs/', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -1161,7 +1161,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/?id=uuid-of-flow-run")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/?id=uuid-of-flow-run")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -1175,7 +1175,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/?id=uuid-of-flow-run';
+const url = 'api.neena.io/api/v1/flow_runs/?id=uuid-of-flow-run';
 
 fetch(url, {
   headers: {
@@ -1246,7 +1246,7 @@ If the flow run is not found, a 404 error is raised.
 ## Create Flow Run
 
 ```shell
-curl -X POST "https://your_api_base_url/api/v1/flow_runs/" \
+curl -X POST "api.neena.io/api/v1/flow_runs/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -1276,7 +1276,7 @@ data = {
     "triggered_by": "user@example.com"
 }
 
-response = requests.post('https://your_api_base_url/api/v1/flow_runs/', headers=headers, json=data)
+response = requests.post('api.neena.io/api/v1/flow_runs/', headers=headers, json=data)
 print(response.json())
 ```
 
@@ -1285,7 +1285,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/")
 request = Net::HTTP::Post.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 request["Content-Type"] = "application/json"
@@ -1308,7 +1308,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/';
+const url = 'api.neena.io/api/v1/flow_runs/';
 
 const headers = {
   'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
@@ -1386,7 +1386,7 @@ Status | Description
 ## Approve Flow Run
 
 ```shell
-curl -X PUT "https://your_api_base_url/api/v1/flow_runs/approve?flow_run_id=uuid-of-flow-run" \
+curl -X PUT "api.neena.io/api/v1/flow_runs/approve?flow_run_id=uuid-of-flow-run" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -1401,7 +1401,7 @@ params = {
     'flow_run_id': 'uuid-of-flow-run',
 }
 
-response = requests.put('https://your_api_base_url/api/v1/flow_runs/approve', headers=headers, params=params)
+response = requests.put('api.neena.io/api/v1/flow_runs/approve', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -1409,7 +1409,7 @@ print(response.json())
 require 'net/http'
 require 'uri'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/approve?flow_run_id=uuid-of-flow-run")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/approve?flow_run_id=uuid-of-flow-run")
 request = Net::HTTP::Put.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -1423,7 +1423,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/approve?flow_run_id=uuid-of-flow-run';
+const url = 'api.neena.io/api/v1/flow_runs/approve?flow_run_id=uuid-of-flow-run';
 
 fetch(url, {
   method: 'PUT',
@@ -1485,7 +1485,7 @@ If the flow run does not exist or cannot be approved, an HTTPException is raised
 ## Get Flow Run with Flow Result
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/flow_runs/with_flow_result?id=uuid-of-flow-run" \
+curl -X GET "api.neena.io/api/v1/flow_runs/with_flow_result?id=uuid-of-flow-run" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -1500,7 +1500,7 @@ params = {
     'id': 'uuid-of-flow-run',
 }
 
-response = requests.get('https://your_api_base_url/api/v1/flow_runs/with_flow_result', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/flow_runs/with_flow_result', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -1508,7 +1508,7 @@ print(response.json())
 require 'net/http'
 require 'uri'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/with_flow_result?id=uuid-of-flow-run")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/with_flow_result?id=uuid-of-flow-run")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -1522,7 +1522,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/with_flow_result?id=uuid-of-flow-run';
+const url = 'api.neena.io/api/v1/flow_runs/with_flow_result?id=uuid-of-flow-run';
 
 fetch(url, {
   headers: {
@@ -1595,7 +1595,7 @@ If the flow run is not found, a 404 error is raised.
 ## Get All Flow Runs for a Specific Flow ID
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/flow_runs/all_for_flow_id?flow_id=uuid-of-flow&skip=0&limit=100" \
+curl -X GET "api.neena.io/api/v1/flow_runs/all_for_flow_id?flow_id=uuid-of-flow&skip=0&limit=100" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -1612,7 +1612,7 @@ params = {
     'limit': 100,
 }
 
-response = requests.get('https://your_api_base_url/api/v1/flow_runs/all_for_flow_id', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/flow_runs/all_for_flow_id', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -1620,7 +1620,7 @@ print(response.json())
 require 'net/http'
 require 'uri'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/all_for_flow_id?flow_id=uuid-of-flow&skip=0&limit=100")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/all_for_flow_id?flow_id=uuid-of-flow&skip=0&limit=100")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -1634,7 +1634,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/all_for_flow_id?flow_id=uuid-of-flow&skip=0&limit=100';
+const url = 'api.neena.io/api/v1/flow_runs/all_for_flow_id?flow_id=uuid-of-flow&skip=0&limit=100';
 
 fetch(url, {
   headers: {
@@ -1695,7 +1695,7 @@ Status | Description
 ## Get Preview of All Flow Runs
 
 ```shell
-curl -X GET "https://your_api_base_url/api/v1/flow_runs/preview/all?skip=0&limit=100" \
+curl -X GET "api.neena.io/api/v1/flow_runs/preview/all?skip=0&limit=100" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
@@ -1711,7 +1711,7 @@ params = {
     'limit': 100,
 }
 
-response = requests.get('https://your_api_base_url/api/v1/flow_runs/preview/all', headers=headers, params=params)
+response = requests.get('api.neena.io/api/v1/flow_runs/preview/all', headers=headers, params=params)
 print(response.json())
 ```
 
@@ -1719,7 +1719,7 @@ print(response.json())
 require 'net/http'
 require 'uri'
 
-uri = URI.parse("https://your_api_base_url/api/v1/flow_runs/preview/all?skip=0&limit=100")
+uri = URI.parse("api.neena.io/api/v1/flow_runs/preview/all?skip=0&limit=100")
 request = Net::HTTP::Get.new(uri)
 request["Authorization"] = "Bearer YOUR_ACCESS_TOKEN"
 
@@ -1733,7 +1733,7 @@ puts response.body
 ```javascript
 const fetch = require('node-fetch');
 
-const url = 'https://your_api_base_url/api/v1/flow_runs/preview/all?skip=0&limit=100';
+const url = 'api.neena.io/api/v1/flow_runs/preview/all?skip=0&limit=100';
 
 fetch(url, {
   headers: {
@@ -1792,4 +1792,4 @@ Status | Description
 
 The above documentation provides detailed information about the **Flow Runs** endpoints in your API, including code examples, descriptions, HTTP requests, headers, parameters, and responses. You can continue to expand your documentation by adding any additional endpoints or sections as needed.
 
-Remember to replace placeholders like `your_api_base_url` and `YOUR_ACCESS_TOKEN` with actual values when deploying the documentation.
+Remember to replace placeholders like `api.neena.io` and `YOUR_ACCESS_TOKEN` with actual values when deploying the documentation.
