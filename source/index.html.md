@@ -37,4 +37,4 @@ Welcome to the Neena API. With the Neena platform API, you can manage your agent
 You must replace <code>YOUR_API_KEY</code> with your personal API key. 
 </aside>
 
-If you need an API key, sign up for a developer key through our [application](https://app.neena.io, 'Neena').
+If you need an API key, sign up for a developer key through our [application](https://app.neena.io).
