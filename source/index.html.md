@@ -31,7 +31,7 @@ meta:
 
 # Introduction
 
-Welcome to the Neena API! With the Neena platform API, you can send manage your agents, send requests to automate and get live information on automations. Our API provides easy access to Neena’s features, enabling seamless integration into your existing systems.
+Welcome to the Neena API. With the Neena platform API, you can manage your agents, send requests to automate and get live information on automations. Our API provides easy access to Neena’s features, enabling seamless integration into your existing systems.
 
 <aside class="notice">
 You must replace <code>YOUR_API_KEY</code> with your personal API key. 
