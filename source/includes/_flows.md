@@ -1,8 +1,8 @@
 # Flows
 
-Flows represent the blueprint of a workflow, defining the sequence of task operations and their dependencies. They are generated from a [Flow Request](https://docs.neena.io/#flow-requests, 'Flow Request Model') and can be executed to perform the specified tasks in order.
+Flows represent the blueprint of a workflow, defining the sequence of task operations and their dependencies. They are generated from a [Flow Request](https://docs.neena.io/#flow-requests) and can be executed to perform the specified tasks in order.
 
-Flows are essential for structuring complex workflows, allowing you to define tasks, set dependencies, and manage the overall process. Once a flow is executed, it creates a [Flow Run](https://docs.neena.io/#flow-runs, 'Flow Run Model') that performs the tasks as defined.
+Flows are essential for structuring complex workflows, allowing you to define tasks, set dependencies, and manage the overall process. Once a flow is executed, it creates a [Flow Run](https://docs.neena.io/#flow-runs) that performs the tasks as defined.
 
 ## Flow Model
 

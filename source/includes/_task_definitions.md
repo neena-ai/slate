@@ -1,6 +1,6 @@
 # Task Definitions
 
-Task definitions are the blueprints for task operations, which in turn are the core components of a [Flow](https://docs.neena.io/#flows, 'Flow Model') in Neena. They define specific operations or actions within a flow, detailing the necessary inputs and expected outputs. These tasks integrate with external systems and services.
+Task definitions are the blueprints for task operations, which in turn are the core components of a [Flow](https://docs.neena.io/#flows) in Neena. They define specific operations or actions within a flow, detailing the necessary inputs and expected outputs. These tasks integrate with external systems and services.
 
 Creating, updating, or deleting task definitions is not possible through the API; they are maintained by the platform but can be viewed and utilized in your flows.
 

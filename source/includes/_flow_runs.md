@@ -1,5 +1,5 @@
 # Flow Runs
-Flow runs represent the execution of a [Flow](https://docs.neena.io/#flows, 'Flow Model') that was generated from a [Flow Request](https://docs.neena.io/#flow-requests, 'Flow Request Model'). Once the flow is created, a flow run performs the steps defined in the flow, transitioning through stages such as pending, in-progress, and completed.
+Flow runs represent the execution of a [Flow](https://docs.neena.io/#flows) that was generated from a [Flow Request](https://docs.neena.io/#flow-requests). Once the flow is created, a flow run performs the steps defined in the flow, transitioning through stages such as pending, in-progress, and completed.
 
 Flow runs are essential for tracking the real-time progress of the workflow, providing key details about the execution of tasks within the flow, such as status updates, when the run was triggered, and task outcomes. 
 
